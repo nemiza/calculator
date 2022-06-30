@@ -1,0 +1,32 @@
+openapi: 3.0.0
+
+info:
+  title: Simple calculator
+  description: "Calculate elementary expression. Only operations (+ - * /) are available, parenthesis and others are excluded.\n\n
+    Click on calculate bar below and try it out by input your expression to calculate in \"expression\" field. To view result click \"Execute\" button."
+  version: 0.0.0
+
+paths:
+  /calculate:
+    get:
+      description: Return result of expression.
+      parameters:
+        - name: expression
+          in: query
+          required: true
+          description: Expression for calculate.
+          schema:
+            type : string
+          example: 1.5 - 2 + 6*5/3
+      responses:
+        '200':
+          description: Result of expression
+          content:
+            text/plain:
+              schema: 
+                type: number 
+              example: 9.5
+        '400':
+          description: The specified expression is invalid.
+        default:
+          description: Unexpected error
