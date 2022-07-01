@@ -1,4 +1,4 @@
-const calculate = require('../calculator');
+const calculate = require('../api/calculator');
 
 test('invalid math expression return null', () => {
     expect(calculate('1 -')).toBeNull();
